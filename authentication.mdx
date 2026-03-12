@@ -1,0 +1,100 @@
+---
+title: "Authentication"
+description: "How OCCode handles sign-in, tokens, and the deep-link auth flow."
+---
+
+## Overview
+
+OCCode uses **JWT-based authentication** with the `occ.mba.sh` API gateway. There are two sign-in methods:
+
+| Method | Flow |
+|--------|------|
+| **Google OAuth** | One-click via Google — recommended |
+| **Email + Password** | Traditional sign-up with email and password |
+
+Both methods issue a JWT token that the editor stores locally and sends with every API request.
+
+## Auth Flow
+
+Here's what happens when you sign in from OCCode:
+
+```
+OCCode Editor                    Browser                     occ.mba.sh
+     │                              │                            │
+     │── opens browser ────────────▶│                            │
+     │                              │── GET /api/v1/auth/google ▶│
+     │                              │                            │── redirects to Google
+     │                              │◀── Google callback ────────│
+     │                              │                            │── creates/finds user
+     │                              │                            │── issues JWT
+     │                              │◀── /auth/callback?token=… ─│
+     │                              │                            │
+     │◀── occode://openclaw.home ───│                            │
+     │    /auth?token=…&balance=…   │                            │
+     │                              │                            │
+     │── stores token locally       │                            │
+     │── ready to make requests     │                            │
+```
+
+<Info>
+The `occode://openclaw.home` deep link is a custom protocol registered by the OCCode desktop app. It receives the JWT token and balance directly from the browser after authentication.
+</Info>
+
+## Token Details
+
+| Property | Value |
+|----------|-------|
+| Format | JWT (JSON Web Token) |
+| Signing | HS256 with server secret |
+| Expiry | Set by server configuration |
+| Storage | `localStorage` in dashboard; local storage in editor |
+| Sent as | `Authorization: Bearer <token>` header |
+
+## API Authentication
+
+Every API request to `occ.mba.sh` requires a valid JWT:
+
+```bash
+curl https://occ.mba.sh/api/v1/me \
+  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+Response:
+```json
+{
+  "id": "uuid",
+  "email": "you@example.com",
+  "name": "Your Name",
+  "balance_usd": "4.250000",
+  "picture": "https://..."
+}
+```
+
+If the token is invalid or expired, the API returns `401 Unauthorized`.
+
+## Google OAuth
+
+OCCode uses Google's OAuth 2.0 consent flow. The redirect URI is:
+
+```
+https://occ.mba.sh/api/v1/auth/google/callback
+```
+
+The `state` parameter carries context (like `ref=occ-editor`) so the server knows to redirect back to the editor after authentication.
+
+## Email + Password
+
+For users who prefer not to use Google:
+
+<Steps>
+  <Step title="Sign up">
+    `POST /api/v1/auth/signup` with `email` and `password` (min 8 characters). Passwords are hashed with bcrypt.
+  </Step>
+  <Step title="Log in">
+    `POST /api/v1/auth/login` with credentials. Returns a JWT token.
+  </Step>
+</Steps>
+
+<Warning>
+  There is currently no password reset flow. If you forget your password, sign in with Google instead (if you used the same email, the accounts are linked).
+</Warning>
