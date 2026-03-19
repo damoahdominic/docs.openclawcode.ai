@@ -1,0 +1,64 @@
+---
+title: "Bring Your Own Key"
+sidebarTitle: "Bring Your Own Key"
+icon: "key"
+description: "Use your own API keys with OCCode for full control over models and costs."
+---
+
+## What is BYOK?
+
+**Bring Your Own Key** means you can use your own AI provider API keys with OCCode instead of (or alongside) the built-in credits system. This gives you:
+
+- **Model choice** — use Claude, GPT, Gemini, Llama, or any supported model
+- **Cost control** — pay your provider directly at their rates
+- **No credit limits** — your usage is limited only by your provider's quota
+
+---
+
+## Supported providers
+
+| Provider | Models | How to get a key |
+|---|---|---|
+| **Anthropic** | Claude 4, Claude Opus, Claude Sonnet | [console.anthropic.com](https://console.anthropic.com) |
+| **OpenAI** | GPT-5, GPT-4o, o3 | [platform.openai.com](https://platform.openai.com) |
+| **Google** | Gemini 3, Gemini 2.5 | [aistudio.google.com](https://aistudio.google.com) |
+| **OpenRouter** | 200+ models | [openrouter.ai](https://openrouter.ai) |
+
+<Tip>**OpenRouter** is a great option if you want access to many models with a single key.</Tip>
+
+---
+
+## Adding your API key
+
+<Steps>
+  <Step title="Open the Models app" icon="cube">
+    In OCCode, navigate to the **Models** app from the sidebar.
+  </Step>
+  <Step title="Click Add Provider" icon="plus">
+    Select your provider from the list.
+  </Step>
+  <Step title="Paste your API key" icon="paste">
+    Enter your API key. OCCode validates it immediately.
+  </Step>
+  <Step title="Set as default (optional)" icon="star">
+    Choose whether to use this provider as your default model.
+  </Step>
+</Steps>
+
+---
+
+## How billing works with BYOK
+
+| Setup | Who pays |
+|---|---|
+| No custom keys | You pay via OCCode credits |
+| Custom keys added | Your provider bills you directly |
+| Mixed (some BYOK, some default) | Each model bills its respective source |
+
+<Info>When you use your own keys, **no OCCode credits are consumed** for those models. Your credit balance is only used for the built-in Legacy Model.</Info>
+
+---
+
+## Which key is used where?
+
+See [Which Key is Used Where](/key-routing) for a detailed breakdown of how OCCode decides which API key to use for each interaction.

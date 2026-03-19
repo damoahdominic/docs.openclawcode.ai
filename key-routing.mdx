@@ -1,0 +1,59 @@
+---
+title: "Which Key is Used Where"
+sidebarTitle: "Key Routing"
+icon: "route"
+description: "How OCCode decides which API key and model to use for each interaction."
+---
+
+## How key routing works
+
+When your agent processes a request, OCCode follows a priority chain to decide which model and API key to use:
+
+
+
+---
+
+## Routing table
+
+| Scenario | Key used | Billed to |
+|---|---|---|
+| No custom keys configured | OCC Legacy key | Your OCCode credits |
+| Anthropic key added, Claude set as default | Your Anthropic key | Your Anthropic account |
+| OpenAI key added for image generation | Your OpenAI key (for images) | Your OpenAI account |
+| Custom key fails or is invalid | Falls back to OCC Legacy | Your OCCode credits |
+| Specific agent set to use Gemini | Your Google key | Your Google account |
+
+---
+
+## Key types
+
+<CardGroup cols={2}>
+  <Card title="Inference keys" icon="brain">
+    Used for text generation — conversations, tasks, reasoning. This is your main AI model key (Anthropic, OpenAI, Google, etc.).
+  </Card>
+  <Card title="Image generation keys" icon="image">
+    Used for generating images. Typically an OpenAI (DALL-E) or other image model key.
+  </Card>
+</CardGroup>
+
+---
+
+## Fallback behavior
+
+OCCode is designed to **never leave you stuck**:
+
+1. If your primary model is unavailable → tries your fallback model
+2. If your fallback model fails → uses OCC Legacy
+3. If credits are depleted → prompts you to top up or add a BYOK key
+
+<Info>You can configure fallback chains in the **Models** app — set a primary model and one or more fallbacks.</Info>
+
+---
+
+## Checking which key is active
+
+In the **Models** app, each configured provider shows:
+
+- ✅ **Active** — currently being used
+- ⏸️ **Fallback** — will be used if the primary fails
+- ❌ **Invalid** — key needs to be updated

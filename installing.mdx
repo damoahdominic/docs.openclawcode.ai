@@ -1,0 +1,79 @@
+---
+title: "Installing OpenClaw with OCCode"
+sidebarTitle: "Installation"
+icon: "download"
+description: "Download OCCode and get OpenClaw running in minutes — no terminal required."
+---
+
+## Download OCCode
+
+<CardGroup cols={2}>
+  <Card title="macOS" icon="apple" href="https://github.com/damoahdominic/occ/releases/latest">
+    Download for macOS (Apple Silicon & Intel).
+  </Card>
+  <Card title="Windows" icon="windows" href="https://github.com/damoahdominic/occ/releases/latest">
+    Download the installer for Windows 10/11.
+  </Card>
+</CardGroup>
+
+<Tip>Linux support is coming soon. Follow the [GitHub repo](https://github.com/damoahdominic/occ) for updates.</Tip>
+
+---
+
+## What OCCode installs for you
+
+When you run OCCode for the first time, it handles everything:
+
+<Steps>
+  <Step title="Checks prerequisites" icon="magnifying-glass">
+    OCCode verifies your system has what it needs (Node.js, etc.) and installs anything missing.
+  </Step>
+  <Step title="Downloads OpenClaw" icon="cloud-arrow-down">
+    The latest stable version of OpenClaw is downloaded and configured automatically.
+  </Step>
+  <Step title="Generates configuration" icon="gear">
+    A default config is created so your agent works out of the box.
+  </Step>
+  <Step title="Starts the agent" icon="play">
+    OpenClaw starts in the background. You're ready to interact.
+  </Step>
+</Steps>
+
+---
+
+## Sign in to your account
+
+After installation, OCCode opens a browser window for you to sign in:
+
+- **Google** — one click, recommended
+- **Email + password** — create an account if you prefer
+
+<Info>Every new account gets ** in free credits** instantly — no credit card needed.</Info>
+
+---
+
+## Verify it's working
+
+Once signed in, the OCCode home panel shows:
+
+| Indicator | What it means |
+|---|---|
+| 🟢 **Agent Online** | OpenClaw is running and ready |
+| 🟡 **Starting...** | Agent is booting up (wait a moment) |
+| 🔴 **Offline** | Something needs attention — check the troubleshooting panel |
+
+---
+
+## Troubleshooting installation
+
+<AccordionGroup>
+  <Accordion icon="apple" title="macOS: 'App can't be opened'">
+    Right-click the app → Open → Click "Open" in the dialog. This is a standard macOS Gatekeeper prompt for apps downloaded outside the App Store.
+  </Accordion>
+  <Accordion icon="windows" title="Windows: SmartScreen warning">
+    Click "More info" → "Run anyway". Windows SmartScreen shows this for new apps that haven't built up reputation yet.
+  </Accordion>
+  <Accordion icon="triangle-exclamation" title="Installation hangs">
+    Check your internet connection. OCCode needs to download OpenClaw (~50MB). If it's still stuck, restart the app.
+  </Accordion>
+</AccordionGroup>

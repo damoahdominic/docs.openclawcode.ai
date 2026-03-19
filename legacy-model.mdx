@@ -1,0 +1,64 @@
+---
+title: "OCC Legacy Model"
+sidebarTitle: "Legacy Model"
+icon: "clock-rotate-left"
+description: "How OCCode's built-in inference model works and when it's used."
+---
+
+## What is the Legacy Model?
+
+The **OCC Legacy Model** (also called ) is the default AI model available to all OCCode users out of the box. It's a capable, cost-efficient model that handles everyday tasks well.
+
+When you sign up for OCCode and start using your agent, this is the model that powers your interactions — no configuration needed.
+
+---
+
+## When is it used?
+
+| Scenario | Model used |
+|---|---|
+| New user, no custom keys | **OCC Legacy** (default) |
+| User with their own API keys | User's preferred model (BYOK) |
+| Fallback when custom model fails | **OCC Legacy** (automatic) |
+
+---
+
+## Capabilities
+
+The Legacy Model is designed for general-purpose AI tasks:
+
+<CardGroup cols={2}>
+  <Card title="Conversations" icon="comments">
+    Natural, helpful conversations with context awareness.
+  </Card>
+  <Card title="Writing" icon="pen">
+    Drafting emails, content, summaries, and documents.
+  </Card>
+  <Card title="Analysis" icon="chart-simple">
+    Answering questions about data, documents, and code.
+  </Card>
+  <Card title="Task execution" icon="list-check">
+    Following multi-step instructions and completing tasks.
+  </Card>
+</CardGroup>
+
+---
+
+## Cost
+
+The Legacy Model is billed from your credit balance:
+
+| Interaction type | Approximate cost |
+|---|---|
+| Quick question | ~/bin/bash.001 |
+| Moderate task | ~/bin/bash.003 |
+| Long conversation | ~/bin/bash.01 |
+| Complex task | ~/bin/bash.05 |
+
+With  in free credits, you can have thousands of interactions.
+
+---
+
+## Upgrading to your own models
+
+Want to use Claude, GPT, Gemini, or other models? See [Bring Your Own Key](/byok) to configure your own API keys.

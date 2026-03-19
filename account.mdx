@@ -1,0 +1,56 @@
+---
+title: "Account Management"
+sidebarTitle: "Account"
+icon: "user"
+description: "Manage your OCCode account, profile, and settings."
+---
+
+## Your account
+
+Your OCCode account is your identity across the entire platform — the desktop app, the web dashboard, and any connected services.
+
+---
+
+## Account dashboard
+
+Visit [occ.mba.sh](https://occ.mba.sh) or click your profile in OCCode to access:
+
+<CardGroup cols={2}>
+  <Card title="Profile" icon="user">
+    Your name, email, and profile picture (imported from Google if used).
+  </Card>
+  <Card title="Credit balance" icon="wallet">
+    Current balance and purchase history.
+  </Card>
+  <Card title="API keys" icon="key">
+    Your OCC API keys (sk-mp and sk-occ) for programmatic access.
+  </Card>
+  <Card title="Usage history" icon="chart-line">
+    Detailed log of every interaction and its cost.
+  </Card>
+</CardGroup>
+
+---
+
+## API keys
+
+Every account gets two API keys:
+
+| Key prefix | Purpose |
+|---|---|
+|  | MoltPilot key — for the built-in assistant |
+|  | OpenClaw key — for your agent's inference |
+
+Both keys draw from your shared credit balance. You can view them in your dashboard but **never share them publicly**.
+
+<Warning>If you suspect a key has been compromised, regenerate it immediately from your dashboard.</Warning>
+
+---
+
+## Signing out
+
+You can sign out from:
+- The OCCode desktop app (sidebar → Sign Out)
+- The web dashboard (sidebar → Sign Out)
+
+Signing out doesn't stop your agent — it just disconnects your session. Sign back in anytime to resume.

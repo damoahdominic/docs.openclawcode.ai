@@ -14,7 +14,7 @@
         {
           "anchor": "Website",
           "icon": "browser",
-          "href": "https://openclawcode.org"
+          "href": "https://openclawcode.ai"
         },
         {
           "anchor": "GitHub",
@@ -31,15 +31,37 @@
             "group": "Getting Started",
             "pages": [
               "index",
-              "quickstart",
-              "authentication"
+              "whats-openclaw",
+              "why-occode",
+              "installing",
+              "quickstart"
             ]
           },
           {
-            "group": "How OCCode Works",
+            "group": "Core Features",
             "pages": [
-              "inference",
-              "billing"
+              "moltpilot",
+              "legacy-model",
+              "byok",
+              "key-routing"
+            ]
+          },
+          {
+            "group": "The Interface",
+            "pages": [
+              "layout",
+              "home-panel",
+              "search-actions",
+              "apps"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "nemoclaw",
+              "authentication",
+              "account",
+              "credits"
             ]
           }
         ]
@@ -55,7 +77,7 @@
     "primary": {
       "type": "button",
       "label": "Download",
-      "href": "https://openclawcode.org/#download"
+      "href": "https://openclawcode.ai/#download"
     }
   },
   "footer": {
